@@ -3,6 +3,8 @@ import { NavigationActions } from 'react-navigation';
 import PropTypes from 'prop-types';
 import api from 'services/api';
 
+import Reactotron from 'reactotron-react-native';
+
 import {
   View,
   Text,
@@ -19,7 +21,7 @@ export default class Welcome extends Component {
     navigation: PropTypes.shape({
       dispatch: PropTypes.func,
     }).isRequired,
-  }
+  };
 
   static navigationOptions = {
     header: null,
@@ -36,6 +38,7 @@ export default class Welcome extends Component {
 
     if (!response.ok) throw Error();
 
+    Reactotron.log(this.state);
     await AsyncStorage.setItem('@Githubber:username', this.state.username);
   };
 
@@ -80,7 +83,7 @@ export default class Welcome extends Component {
           autoCorrect={false}
           style={styles.input}
           placeholder="Digite seu usuário"
-          onChange={(username) => { this.setState({ username }); }}
+          onChangeText={(username) => { this.setState({ username }); }}
         />
 
         <TouchableOpacity style={styles.button} onPress={this.navigateToUser}>
