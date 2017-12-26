@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+
+import Organization from './components/Organization';
 
 export default class Organizations extends Component {
   static navigationOptions = {
@@ -13,7 +15,7 @@ export default class Organizations extends Component {
   render() {
     return (
       <View>
-        <Text>Orgs</Text>
+        <Organization />
       </View>
     );
   }

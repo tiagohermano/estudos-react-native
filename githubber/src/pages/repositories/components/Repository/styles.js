@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     marginBottom: 20,
     marginTop: 20,
-    marginHorizontal: 20, 
+    marginHorizontal: 20,
   },
 
   title: {
