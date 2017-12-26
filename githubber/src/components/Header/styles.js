@@ -1,14 +1,21 @@
 import { StyleSheet } from 'react-native';
-import { colors, fonts } from 'styles';
+import { colors, fonts, metrics } from 'styles';
 
 const styles = StyleSheet.create({
   container: {
-    height: 54,
+    height: 54 + metrics.statusBarHeight,
+    paddingTop: metrics.statusBarHeight,
     backgroundColor: colors.white,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: 20,
+  },
+
+  title: {
+    color: fonts.primary,
+    fontSize: fonts.regular,
+    fontWeight: 'bold',
   },
 });
 
