@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import {
   View,
@@ -9,14 +10,25 @@ import {
 import styles from './styles';
 
 export default class Organization extends Component {
+  static propTypes = {
+    organization: PropTypes.shape({
+      avatar_url: PropTypes.string,
+      login: PropTypes.string,
+    }).isRequired,
+  };
+
+  static defaultProps = {};
+
   render() {
+    const { organization } = this.props;
+
     return (
       <View style={styles.container}>
         <Image
           style={styles.avatar}
-          source={{ uri: 'https://avatars0.githubusercontent.com/u/28929274?v=4&s=200' }}
+          source={{ uri: organization.avatar_url }}
          />
-         <Text style={styles.title}>RocketSeat</Text>
+         <Text style={styles.title}>{organization.login}</Text>
       </View>
     );
   }

@@ -28,7 +28,7 @@ export default class Welcome extends Component {
   };
 
   state = {
-    username: '',
+    username: 'diego3g',
     error: false,
     loading: false,
   };
