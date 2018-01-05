@@ -7,12 +7,12 @@ import {
 } from 'react-native';
 
 import {
-  Back,
-  Heart,
-  More,
   PinIcon,
-  Share
 } from '../util/icons';
+
+import UtilityNavButton from './UtilityNavButton';
+import Button from './Button';
+import LocalImage from './LocalImage';
 
 export default class Pin extends Component {
   render() {
@@ -21,30 +21,31 @@ export default class Pin extends Component {
 
         <View style={styles.PinHeader}>
           <View style={styles.utilityNav}>
-            <Back />
-            <Heart />
-            <Share />
-            <More />
+            <UtilityNavButton icon="Back"/>
+            <UtilityNavButton icon="Heart"/>
+            <UtilityNavButton icon="Share"/>
+            <UtilityNavButton icon="More"/>
           </View>
           <View style={styles.PinButtonContainer}>
-            <View style={styles.PinButton}>
-              <PinIcon />
-              <Text style={styles.PinButtonText}>Save</Text>
-            </View>
+            <Button red icon text="Save"/>
           </View>
         </View>
 
         <View style={styles.PinContent}>
-          <Text style={styles.ImagePlaceholder}>Placeholder</Text>
+          <LocalImage
+            source={require('../assets/images/redmi5-1.png')}
+            originalWidth={1400}
+            originalHeight={788}
+            />
         </View>
 
         <View style={styles.PinMeta}>
           <View style={styles.PinMetaTextContainer}>
             <Text style={styles.PinMetaText}>Saved from</Text>
             <Text style={[styles.PinMetaText, styles.TextBold]}>website.com</Text>
-            <View style={[styles.PinButton, styles.UtilityButton]}>
-              <Text style={[styles.PinButtonText, styles.UtilityButtonText]}>Visit</Text>
-            </View>
+          </View>
+          <View style={styles.PinButtonContainer}>
+            <Button text="Visit"/>
           </View>
         </View>
 
@@ -102,7 +103,6 @@ const styles = StyleSheet.create({
   },
   PinContent: {
     backgroundColor: 'white',
-    flex: 3,
     justifyContent: 'center',
     alignItems: 'center',
     paddingLeft: 8,
