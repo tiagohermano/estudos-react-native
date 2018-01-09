@@ -9,7 +9,8 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View,
+  ScrollView,
 } from 'react-native';
 
 const instructions = Platform.select({
@@ -22,11 +23,37 @@ const instructions = Platform.select({
 import Pin from './src/components/Pin';
 
 export default class App extends Component<{}> {
+  constructor(props) {
+    super(props)
+    this.state = {
+      columns: 2,
+      pin: {
+        barkhampton: {
+          source: require('./src/assets/images/barkhampton.jpg'),
+          originalWidth: 576,
+          originalHeight: 768,
+        },
+        redmi51: {
+          source: require('./src/assets/images/redmi5-1.png'),
+          originalWidth: 1400,
+          originalHeight: 788,
+        },
+        redmi52: {
+          source: require('./src/assets/images/redmi5-2.png'),
+          originalWidth: 1400,
+          originalHeight: 788,
+        }
+      }
+    }
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <Pin />
-      </View>
+      <ScrollView style={styles.container}>
+        <Pin pinsource={this.state.pin.barkhampton} columns={this.state.columns}/>
+        <Pin pinsource={this.state.pin.redmi51} columns={this.state.columns}/>
+        <Pin pinsource={this.state.pin.redmi52} columns={this.state.columns}/>
+      </ScrollView>
     );
   }
 }
@@ -34,8 +61,6 @@ export default class App extends Component<{}> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
   welcome: {

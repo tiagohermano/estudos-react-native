@@ -4,6 +4,8 @@ import {
   StyleSheet,
   View,
   Text,
+  Image,
+  Dimensions,
 } from 'react-native';
 
 import {
@@ -14,10 +16,12 @@ import UtilityNavButton from './UtilityNavButton';
 import Button from './Button';
 import LocalImage from './LocalImage';
 
+let windowWidth = Dimensions.get('window').width
+
 export default class Pin extends Component {
   render() {
     return (
-      <View style={styles.PinContainer}>
+      <View style={[styles.PinContainer, {width: windowWidth/this.props.columns}]}>
 
         <View style={styles.PinHeader}>
           <View style={styles.utilityNav}>
@@ -33,9 +37,10 @@ export default class Pin extends Component {
 
         <View style={styles.PinContent}>
           <LocalImage
-            source={require('../assets/images/redmi5-1.png')}
-            originalWidth={1400}
-            originalHeight={788}
+            source={this.props.pinsource.source}
+            originalWidth={this.props.pinsource.originalWidth}
+            originalHeight={this.props.pinsource.originalHeight}
+            columns={this.props.columns}
             />
         </View>
 
@@ -68,12 +73,13 @@ export default class Pin extends Component {
 
 const styles = StyleSheet.create({
   PinContainer: {
-    flex: 1,
-    backgroundColor: 'white',
-    alignSelf: 'stretch',
+    // flex: 1,
+    // backgroundColor: 'green',
+    // alignSelf: 'stretch',
   },
   PinHeader: {
     flex: 1,
+    minHeight: 50,
     backgroundColor: 'white',
     flexDirection: 'row',
     alignItems: 'flex-end', // VERTICAL
@@ -115,11 +121,12 @@ const styles = StyleSheet.create({
     borderRadius: 6,
   },
   PinMeta: {
-    flex: 2,
+    flex: 1,
+    minHeight: 70,
     flexDirection: 'row',
     paddingTop: 16,
     paddingRight: 8,
-    paddingBottom: 16,
+    paddingBottom: 8,
     paddingLeft: 8,
   },
   PinMetaTextContainer: {
@@ -135,10 +142,13 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   PinUser: {
-    flex: 5,
+    flex: 1,
     flexDirection: 'row',
     paddingLeft: 8,
     paddingRight: 8,
+  },
+  PinUserContainer: {
+
   },
   PinUserAvatar: {
     backgroundColor: 'black',
