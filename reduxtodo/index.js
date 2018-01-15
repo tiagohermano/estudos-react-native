@@ -1,4 +1,4 @@
 import { AppRegistry } from 'react-native';
-import App from './src/index.js';
+import App from './src';
 
 AppRegistry.registerComponent('reduxtodo', () => App);
