@@ -23,7 +23,7 @@ class Main extends Component {
     navigation: PropTypes.shape({
       navigate: PropTypes.func,
     }).isRequired,
-    searchAndAddRepository: PropTypes.func.isRequired,
+    addFavorite: PropTypes.func.isRequired,
     favorites: PropTypes.arrayOf(PropTypes.shape({
       id: PropTypes.number,
     })).isRequired,
@@ -34,7 +34,9 @@ class Main extends Component {
   };
 
   addNewFavorite = () => {
-    this.props.searchAndAddRepository(this.state.newRepositoryName);
+    this.props.addFavorite(this.state.newRepositoryName);
+
+    this.setState({ newRepositoryName: '' });
   };
 
   render() {
@@ -63,7 +65,7 @@ class Main extends Component {
         </View>
 
         <View style={styles.userInformation}>
-          <TouchableOpacity activeOpacity={0.6} onPress={() => { navigate('Favorites') }}>
+          <TouchableOpacity activeOpacity={0.6} onPress={() => { navigate('Favorites'); }}>
             <Text style={styles.favoritesText}>
               MEUS FAVORITOS ({this.props.favorites.length})
             </Text>
