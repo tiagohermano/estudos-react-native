@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 /* Presentational */
 import { ScrollView } from 'react-native';
-import Repository from 'components/Repository';
+import RepositoryComponent, { Repository } from 'components/Repository';
 
 /* Redux */
 import { connect } from 'react-redux';
@@ -27,7 +27,7 @@ class Favorites extends Component {
         contentContainerStyle={styles.contentContainer}
       >
         { this.props.favorites.map(repository => (
-          <Repository key={repository.id} repository={repository} />
+          <RepositoryComponent key={repository.id} repository={repository} />
         )) }
       </ScrollView>
     );

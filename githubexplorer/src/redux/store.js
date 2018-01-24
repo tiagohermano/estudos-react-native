@@ -19,7 +19,6 @@ const middleware = [sagaMiddleware];
 const createAppropriateStore = __DEV__ ? console.tron.createStore : createStore;
 export const store = createAppropriateStore(
   rootReducer,
-  undefined,
   compose(applyMiddleware(...middleware)),
 );
 
