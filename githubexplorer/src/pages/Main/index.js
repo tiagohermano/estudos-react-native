@@ -10,7 +10,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import * as actions from 'redux/actions/favorites';
+import { addFavorite } from 'redux/ducks/favorites';
 
 import styles from './styles';
 
@@ -81,6 +81,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators(actions, dispatch);
+  bindActionCreators({ addFavorite }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);
