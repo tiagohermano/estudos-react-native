@@ -1,16 +1,16 @@
 import React from 'react';
 import {
   View,
-  Text,
+  TextInput,
 } from 'react-native';
-
+import Header from 'components/Header';
 import styles from './styles';
 
 const Search = () => (
   <View style={styles.container}>
-    <Text style={{ color: '#FFF' }}>
-      Busca
-    </Text>
+    <Header>
+      <TextInput style={{ backgroundColor: "#FFF" }} />
+    </Header>
   </View>
 );
 
