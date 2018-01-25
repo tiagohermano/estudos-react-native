@@ -1,8 +1,8 @@
 import 'config/ReactotronConfig';
 
 import React from 'react';
-import { View } from 'react-native';
 
+import Navigator from 'navigation';
 import { Provider } from 'react-redux';
 import createStore from './store';
 
@@ -10,7 +10,7 @@ const store = createStore();
 
 const App = () => (
   <Provider store={store}>
-    <View />
+    <Navigator />
   </Provider>
 );
 
