@@ -16,7 +16,7 @@ const Player = () => (
       <View style={styles.leftContent}>
         <Image
           style={styles.thumbnail}
-          source={{}}
+          source={{ uri: 'https://ainhoaaristizabal.files.wordpress.com/2013/12/imagine-dragons-night-visions-album-cover-640x6' }}
         />
         <View style={styles.current}>
           <Text style={styles.title}>Música tocando</Text>
