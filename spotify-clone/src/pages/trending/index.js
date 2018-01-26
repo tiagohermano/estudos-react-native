@@ -24,27 +24,27 @@ const songs = [
     "thumbnail": "https://i.ytimg.com/vi/8VDjPYcL-oU/maxresdefault.jpg",
     "url": "https://diego3g.github.io/gonative/music2.mp3"
   },
-  // {
-  //   "id": 2,
-  //   "title": "Popsicle",
-  //   "author": "LFZ",
-  //   "thumbnail": "https://i.ytimg.com/vi/EP625xQIGzs/maxresdefault.jpg",
-  //   "url": "https://diego3g.github.io/gonative/music3.mp3"
-  // },
-  // {
-  //   "id": 3,
-  //   "title": "Your Stories (feat. Koit Toome)",
-  //   "author": "Cartoon",
-  //   "thumbnail": "https://i.ytimg.com/vi/8VDjPYcL-oU/maxresdefault.jpg",
-  //   "url": "https://diego3g.github.io/gonative/music2.mp3"
-  // },
-  // {
-  //   "id": 4,
-  //   "title": "Campfire",
-  //   "author": "RetroVision",
-  //   "thumbnail": "https://i.ytimg.com/vi/B2p-jLTmFJ0/maxresdefault.jpg",
-  //   "url": "https://diego3g.github.io/gonative/music1.mp3"
-  // },
+  {
+    "id": 2,
+    "title": "Popsicle",
+    "author": "LFZ",
+    "thumbnail": "https://i.ytimg.com/vi/EP625xQIGzs/maxresdefault.jpg",
+    "url": "https://diego3g.github.io/gonative/music3.mp3"
+  },
+  {
+    "id": 3,
+    "title": "Your Stories (feat. Koit Toome)",
+    "author": "Cartoon",
+    "thumbnail": "https://i.ytimg.com/vi/8VDjPYcL-oU/maxresdefault.jpg",
+    "url": "https://diego3g.github.io/gonative/music2.mp3"
+  },
+  {
+    "id": 4,
+    "title": "Campfire",
+    "author": "RetroVision",
+    "thumbnail": "https://i.ytimg.com/vi/B2p-jLTmFJ0/maxresdefault.jpg",
+    "url": "https://diego3g.github.io/gonative/music1.mp3"
+  },
 ];
 const albums = [
   {

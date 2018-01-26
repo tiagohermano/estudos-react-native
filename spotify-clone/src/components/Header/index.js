@@ -1,28 +1,51 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   View,
   Text,
+  TouchableOpacity,
 } from 'react-native';
-import PropTypes from 'prop-types';
+
+import Icon from 'react-native-vector-icons/FontAwesome';
+
+import { connect } from 'react-redux';
+import { NavigationActions } from 'react-navigation';
 
 import styles from './styles';
 
-export default class Header extends Component {
+class Header extends Component {
   static propTypes = {
     title: PropTypes.string,
     children: PropTypes.element,
+    backEnabled: PropTypes.bool,
+    dispatch: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
     title: null,
     children: null,
+    backEnabled: false,
+  };
+
+  navigateBack = () => {
+    const { dispatch } = this.props;
+
+    return dispatch(NavigationActions.back());
   };
 
   renderHeaderTitle = () => (
     <View style={styles.headerContainer}>
+      <View style={styles.leftButton}>
+        { this.props.backEnabled &&
+          <TouchableOpacity onPress={this.navigateBack}>
+            <Icon name="angle-left" size={20} color="#FFF" />
+          </TouchableOpacity>
+        }
+      </View>
       <Text style={styles.title}>
         { this.props.title }
       </Text>
+      <View style={styles.rightHidden} />
     </View>
   );
 
@@ -38,3 +61,5 @@ export default class Header extends Component {
     );
   }
 }
+
+export default connect()(Header);

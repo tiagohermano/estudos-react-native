@@ -9,7 +9,7 @@ import {
 
 import styles from './styles';
 
-import AlbumItem from './components/AlbumItem';
+import AlbumItemComponent, { AlbumItem } from './components/AlbumItem';
 
 export default class AlbumList extends Component {
   static propTypes = {
@@ -31,7 +31,7 @@ export default class AlbumList extends Component {
       showsHorizontalScrollIndicator={false}
     >
       { this.props.albums.map((album, index) => (
-        <AlbumItem
+        <AlbumItemComponent
           key={album.id}
           style={[
             styles.listItem,

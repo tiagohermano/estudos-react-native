@@ -10,4 +10,7 @@ export default {
   background: '#191919',
   success: '#9DCA83',
   danger: '#E37A7A',
+
+  darkTransparent: 'rgba(0,0,0,0.5)',
+  transparent: 'transparent',
 };
