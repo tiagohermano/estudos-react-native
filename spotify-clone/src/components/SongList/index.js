@@ -18,11 +18,13 @@ export default class SongList extends Component {
       SongItem.propTypes.song,
     ).isRequired,
     loading: PropTypes.bool,
+    showTitle: PropTypes.bool,
   };
 
   static defaultProps = {
     title: 'Músicas',
     loading: false,
+    showTitle: true,
   };
 
   renderEmpty = () => (
@@ -57,9 +59,11 @@ export default class SongList extends Component {
   render() {
     return (
       <View style={styles.section}>
-        <Text style={[styles.sectionTitle, styles.listSectionTitle]}>
-          { this.props.title }
-        </Text>
+        { this.props.showTitle &&
+          <Text style={[styles.sectionTitle, styles.listSectionTitle]}>
+            { this.props.title }
+          </Text>
+        }
 
         { this.props.loading
           ? <ActivityIndicator size="small" color="#FFF" />
