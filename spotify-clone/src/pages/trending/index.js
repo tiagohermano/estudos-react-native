@@ -5,7 +5,7 @@ import {
   ScrollView,
 } from 'react-native';
 import Header from 'components/Header';
-import SongList from 'components/SongList';
+import SongListComponent, { SongList } from 'components/SongList';
 import AlbumList from 'components/AlbumList';
 
 /* Redux */
@@ -45,7 +45,7 @@ class Trending extends Component {
           style={styles.container}
           showVerticalScrollIndicator={false}
         >
-          <SongList
+          <SongListComponent
             title="Músicas em alta"
             songs={this.props.trendingSongs.data}
             loading={this.props.trendingSongs.loading}

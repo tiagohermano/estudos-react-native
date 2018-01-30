@@ -1,35 +1,85 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   View,
   Text,
   TouchableOpacity,
   Image,
+  ActivityIndicator,
 } from 'react-native';
+import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/Entypo';
+import SongItem from 'components/SongList/components/SongItem';
+
+/* Redux */
+import { connect } from 'react-redux';
+import PlayerActions from 'store/ducks/player';
 
 import styles from './styles';
 
-const Player = () => (
-  <View style={styles.container}>
-    <View style={styles.content}>
+export class Player extends Component {
+  static propTypes = {
+    player: PropTypes.shape({
+      song: SongItem.propTypes.song,
+      paused: PropTypes.bool,
+      play: PropTypes.bool,
+      error: PropTypes.bool,
+    }).isRequired,
+    playerPlay: PropTypes.func.isRequired,
+    playerPause: PropTypes.func.isRequired,
+  };
 
-      <View style={styles.leftContent}>
-        <Image
-          style={styles.thumbnail}
-          source={{ uri: 'https://ainhoaaristizabal.files.wordpress.com/2013/12/imagine-dragons-night-visions-album-cover-640x6' }}
-        />
-        <View style={styles.current}>
-          <Text style={styles.title}>Música tocando</Text>
-          <Text style={styles.description}>Imagine Dragons</Text>
+  renderPlay = () => (
+    <TouchableOpacity onPress={this.props.playerPlay}>
+      <Icon name="controller-play" size={20} color="#FFF" />
+    </TouchableOpacity>
+  );
+
+  renderPause = () => (
+    <TouchableOpacity onPress={this.props.playerPause}>
+      <Icon name="controller-paus" size={20} color="#FFF" />
+    </TouchableOpacity>
+  );
+
+  renderButton = () => (
+    this.props.player.paused ? this.renderPlay() : this.renderPause()
+  );
+
+  render() {
+    const { song } = this.props.player;
+
+    return (
+      <View style={styles.container}>
+        <View style={styles.content}>
+
+          <View style={styles.leftContent}>
+            <Image
+              style={styles.thumbnail}
+              source={{ uri: song.thumbnail }}
+            />
+            <View style={styles.current}>
+              <Text style={styles.title}>{song.title}</Text>
+              <Text style={styles.description}>{song.author}</Text>
+            </View>
+          </View>
+
+          { this.props.player.loading
+            ? <ActivityIndicator size="small" color="#FFF" />
+            : this.renderButton()
+          }
+
         </View>
       </View>
+    )
+  }
+}
 
-      <TouchableOpacity onPress={() => {}}>
-        <Icon name="controller-play" size={20} color="#FFF" />
-      </TouchableOpacity>
+const mapStateToProps = state => ({
+  player: state.player,
+});
 
-    </View>
-  </View>
-);
+const mapDispatchToProps = dispatch => ({
+  playerPlay: () => dispatch(PlayerActions.playerPlay()),
+  playerPause: () => dispatch(PlayerActions.playerPause()),
+});
 
-export default Player;
+export default connect(mapStateToProps, mapDispatchToProps)(Player);
