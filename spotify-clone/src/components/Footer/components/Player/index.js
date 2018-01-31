@@ -19,7 +19,12 @@ import styles from './styles';
 export class Player extends Component {
   static propTypes = {
     player: PropTypes.shape({
-      song: SongItem.propTypes.song,
+      song: PropTypes.shape({
+        id: PropTypes.number,
+        title: PropTypes.string,
+        author: PropTypes.string,
+        thumbnail: PropTypes.string,
+      }),
       paused: PropTypes.bool,
       play: PropTypes.bool,
       error: PropTypes.bool,

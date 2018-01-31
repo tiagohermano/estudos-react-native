@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "enzyme": "^3.3.0",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2"
   }
