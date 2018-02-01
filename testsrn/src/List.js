@@ -6,6 +6,7 @@ import {
   ScrollView,
   Text,
   Button,
+  AsyncStorage,
   StyleSheet,
 } from 'react-native';
 
@@ -14,6 +15,12 @@ import Post from './Post';
 export default class List extends Component {
   state = {
     posts: [],
+  }
+
+  async componentDidMount() {
+    const posts = JSON.parse(await AsyncStorage.getItem('@testsrn:posts')) || [];
+
+    this.setState({ posts });
   }
 
   renderPosts = () => (
@@ -33,6 +40,10 @@ export default class List extends Component {
     });
   }
 
+  savePosts = async () => {
+    await AsyncStorage.setItem('@testsrn:posts', JSON.stringify(this.state.posts));
+  }
+
   deletePost = (id) => {
     this.setState({
       posts: this.state.posts.filter(post => post.id ==! id),
@@ -46,7 +57,8 @@ export default class List extends Component {
           ? this.renderPosts()
           : <Text>Nenhum post</Text>
         }
-        <Button title="Add post" onPress={this.addPost} />
+        <Button id="new" title="Add post" onPress={this.addPost} />
+        <Button id="save" title="Save posts" onPress={this.savePosts} />
       </View>
     )
   }
