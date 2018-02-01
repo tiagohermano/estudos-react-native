@@ -13,7 +13,7 @@ const posts = [
 
 describe('Testing List', () => {
   it('renders as expected', () => {
-    const wrapper =  shallow(<List />);
+    const wrapper = shallow(<List />);
     expect(wrapper.find(ScrollView).exists()).toBe(false);
 
     wrapper.setState({ posts });
@@ -21,15 +21,24 @@ describe('Testing List', () => {
   });
 
   it('can add new post', () => {
-    const wrapper =  shallow(<List />);
+    const wrapper = shallow(<List />);
 
     wrapper.find(Button).simulate('press');
 
     expect(wrapper.state('posts')).toHaveLength(1);
   });
 
+  it('can delete post', () => {
+    const wrapper = shallow(<List />);
+    wrapper.setState({ posts });
+
+    wrapper.instance().deletePost(1);
+    expect(wrapper.state('posts'))
+      .toEqual(posts.filter(post => post.id !== 1));
+  });
+
   it('shows empty message', () => {
-    const wrapper =  shallow(<List />);
+    const wrapper = shallow(<List />);
     expect(wrapper.contains(<Text>Nenhum post</Text>)).toBe(true);
 
     wrapper.setProps({ posts });

@@ -1,16 +1,17 @@
-/* @flow weak */
-
 import React from 'react';
 import {
   View,
   Text,
+  Button,
   StyleSheet,
 } from 'react-native';
 
-const Post = ({}) => (
+const Post = ({ post, onDelete }) => (
   <View style={styles.container}>
     <Text>{ post.title }</Text>
     <Text>{ post.description }</Text>
+
+    <Button title="Delete post" onPress={() => onDelete(post.id)} />
   </View>
 );
 

@@ -18,7 +18,9 @@ export default class List extends Component {
 
   renderPosts = () => (
     <ScrollView>
-      { this.state.posts.map(post => <Post key={post.id} post={post} />) }
+      { this.state.posts.map(post =>
+        <Post key={post.id} post={post} onDelete={this.deletePost} />
+      )}
     </ScrollView>
   )
 
@@ -28,6 +30,12 @@ export default class List extends Component {
         ...this.state.posts,
         { id: Math.random(), title: 'Post Aleatório', description: 'Teste' }
       ],
+    });
+  }
+
+  deletePost = (id) => {
+    this.setState({
+      posts: this.state.posts.filter(post => post.id ==! id),
     });
   }
 
