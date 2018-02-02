@@ -8,15 +8,18 @@
   },
   "dependencies": {
     "react": "16.2.0",
-    "react-native": "0.52.2"
+    "react-native": "0.52.2",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2",
+    "redux-mock-store": "^1.5.1"
   },
   "devDependencies": {
-    "enzyme-adapter-react-16": "^1.1.1",
-    "react-dom": "^16.2.0",
     "babel-jest": "22.1.0",
     "babel-preset-react-native": "4.0.0",
     "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "jest": "22.1.4",
+    "react-dom": "^16.2.0",
     "react-test-renderer": "16.2.0",
     "sinon": "^4.2.2"
   },

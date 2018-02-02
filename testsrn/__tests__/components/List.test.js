@@ -32,8 +32,11 @@ describe('Testing List', () => {
   it('can delete post', () => {
     const wrapper = shallow(<List />);
     wrapper.setState({ posts });
+    console.log(wrapper.state('posts'));
 
     wrapper.instance().deletePost(1);
+
+    console.log(wrapper.state('posts'));
     expect(wrapper.state('posts'))
       .toEqual(posts.filter(post => post.id !== 1));
   });
