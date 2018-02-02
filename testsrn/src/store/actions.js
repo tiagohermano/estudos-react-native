@@ -1,8 +1,26 @@
-export function addTodo() {
+export function addTodo(text) {
   return {
     type: 'ADD_TODO',
     payload: {
-      text: 'Estudar o GoNative',
+      text,
+    },
+  }
+}
+
+export function removeTodo(id) {
+  return {
+    type: 'REMOVE_TODO',
+    payload: {
+      id,
+    },
+  }
+}
+
+export function completeTodo(id) {
+  return {
+    type: 'COMPLETE_TODO',
+    payload: {
+      id,
     },
   }
 }
